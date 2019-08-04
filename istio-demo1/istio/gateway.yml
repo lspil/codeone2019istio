@@ -1,0 +1,34 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: istio-app1-gateway
+spec:
+  selector:
+    istio: ingressgateway 
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: istio-app1
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-app1-gateway
+  http:
+  - route:
+    - destination:
+        host: istio-app1
+        subset: v1
+      weight: 20
+    - destination:
+        host: istio-app1
+        subset: v2
+      weight: 80

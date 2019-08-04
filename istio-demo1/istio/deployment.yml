@@ -1,30 +1,30 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello
+  name: istio-app1
   labels:
-    app: hello
+    app: istio-app1
 spec:
   ports:
   - port: 8080
     name: http
   selector:
-    app: hello
+    app: istio-app1
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hello-v1
+  name: istio-app1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: hello
+        app: istio-app1
         version: v1
     spec:
       containers:
-      - name: hello
+      - name: istio-app1
         image: laurentiuspilca/istio1-e1:v1
         imagePullPolicy: IfNotPresent
         ports:
@@ -33,18 +33,18 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: hello-v2
+  name: istio-app1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: hello
+        app: istio-app1
         version: v2
     spec:
       containers:
-      - name: hello
-        image: laurentiuspilca/istio1-e1:v2
+      - name: istio-app1
+        image: laurentiuspilca/istio-app1:v2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
