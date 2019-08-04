@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: istio-app1-host
+  name: istio-app1
 spec:
   hosts:
   - istio-app1
