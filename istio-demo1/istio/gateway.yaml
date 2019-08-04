@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: hello-gateway
+  name: example1-gateway
 spec:
   selector:
     istio: ingressgateway # use istio default controller
@@ -16,19 +16,19 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: hello-app
+  name: example1-app
 spec:
   hosts:
   - "*"
   gateways:
-  - hello-gateway
+  - example1-gateway
   http:
   - route:
     - destination:
-        host: hello
+        host: example1
         subset: v1
       weight: 10
     - destination:
-        host: hello
+        host: example1
         subset: v2
       weight: 90
