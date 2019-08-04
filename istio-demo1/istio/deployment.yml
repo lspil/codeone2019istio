@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: hello
-        image: laurentiuspilca/istio-app2:v2
+        image: laurentiuspilca/istio-app1:v2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
