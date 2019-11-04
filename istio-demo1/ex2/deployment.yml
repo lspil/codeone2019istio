@@ -11,11 +11,15 @@ spec:
   selector:
     app: example1
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: example1-v1
 spec:
+  selector:
+    matchLabels:
+      app: example1
+      version: v1
   replicas: 1
   template:
     metadata:
@@ -30,11 +34,15 @@ spec:
         ports:
         - containerPort: 8080
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: example1-v2
 spec:
+  selector:
+    matchLabels:
+      app: example1
+      version: v2
   replicas: 1
   template:
     metadata:
