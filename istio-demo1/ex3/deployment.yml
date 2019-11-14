@@ -42,7 +42,7 @@ spec:
   selector:
     matchLabels:
       app: example1
-      version: v1
+      version: v2
   replicas: 1
   template:
     metadata:
